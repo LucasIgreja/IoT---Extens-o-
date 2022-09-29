@@ -11,10 +11,10 @@ Na programação em texto, faça assim:<br>
 <br>
 Obs:<br>
 Sensor de presença - Defini o tempo de desligamento da lâmpada no tempo que desejar.
-<br>
-Sistema de fotocélula com sensor de presença e acionamento manual. O sistema se inicia automático e o acionamento da lâmpada manualmente só é posivel com o desligamento do modo automático. <br>
+<br><br>
+Sistema de fotocélula com sensor de presença e acionamento manual. O sistema se inicia automático e o acionamento da lâmpada manualmente só é posivel com o desligamento do modo automático. <br><br>
 BOTÕES<br>
 1 - Desligar modo automático<br>
 2 - Ligar modo automático<br>
 3 - Ligar lâmpada<br>
-4 - Delisgar lâmpada<br>
+4 - Delisgar lâmpada<br><br>
