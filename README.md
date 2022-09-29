@@ -1,14 +1,14 @@
 # IoT-Extensao<br>
-Projeto do curso de Extensão IoT na prática para iniciantes<br>
+Projeto do curso de Extensão IoT na prática para iniciantes<br><br>
 
-1- Projeto fotocélula / sensor de presença com acionamento automático, manual e painel LCD.<br>
+1- Projeto fotocélula / sensor de presença com acionamento automático, manual e painel LCD.<br><br>
 
-No TinkerCAD, crie o circuito igual a imagem abaixo:<br>
+No TinkerCAD, crie o circuito igual a imagem abaixo:<br><br>
 <img src="IoT.png">
-<br>
+<br><br>
 Na programação em texto, faça assim:<br>
 <a href="22_09_03_aula_iot_trabalho_final1.ino">Clique aqui para o código</a>
-<br>
+<br><br>
 Obs:<br>
 Sensor de presença - Defini o tempo de desligamento da lâmpada no tempo que desejar.
 <br><br>
