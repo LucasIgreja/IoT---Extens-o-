@@ -19,7 +19,9 @@ BOTÕES<br>
 3 - Ligar lâmpada<br>
 4 - Delisgar lâmpada<br><br>
 Imagem do circuito funcionando abaixo:<br><br>
-<img src="22.09.03 - Aula - IoT - Trabalho final - Ligado.png">
+<img src="22.09.03 - Aula - IoT - Trabalho final - Ligado.png"><br><br>
+Imagem com detalhes abaixo:<br><br>
+<img src="22.09.03 - Aula - IoT - Trabalho final - Detalhes.png">
 <br><br>
 Lista de material:<br>
 Quantidade - Componente<br>
