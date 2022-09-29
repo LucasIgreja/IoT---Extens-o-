@@ -1,0 +1,146 @@
+// C++ code
+//
+#include <LiquidCrystal.h>
+
+int Pino = 0;
+
+LiquidCrystal lcd_1(12, 11, 10, 9, 8, 7);
+
+void setup()
+{
+  lcd_1.begin(16, 2); // Set up the number of columns and rows on the LCD.
+  pinMode(0, OUTPUT);
+  pinMode(0, INPUT);
+  pinMode(2, INPUT);
+  Serial.begin(9600);
+  pinMode(A5, INPUT);
+  pinMode(4, INPUT);
+  pinMode(5, OUTPUT);
+  pinMode(2, OUTPUT);
+  pinMode(6, INPUT);
+  pinMode(A4, INPUT);
+  pinMode(4, OUTPUT);
+  pinMode(13, OUTPUT);
+  pinMode(A3, INPUT);
+  pinMode(13, INPUT);
+  pinMode(A2, INPUT);
+  pinMode(A1, INPUT);
+
+  lcd_1.print("FOTOCELULA");
+  lcd_1.setCursor(0, 1);
+  lcd_1.print("CONTROLAVEL");
+  delay(1000); // Wait for 1000 millisecond(s)
+  lcd_1.clear();
+}
+
+void loop()
+{
+  digitalWrite(0, HIGH);
+  delay(100); // Wait for 100 millisecond(s)
+  digitalWrite(0, LOW);
+  if (digitalRead(0) == HIGH) {
+    if (digitalRead(2) == LOW) {
+      // SE A LAMPADA ESTIVER DESLIGADA
+      lcd_1.setCursor(0, 0);
+      lcd_1.print("LUZ-OFF");
+      Serial.println("LUZ-OFF");
+    }
+    if (digitalRead(2) == HIGH) {
+      // SE A LAMPADA ESTIVER LIGADA
+      lcd_1.setCursor(0, 0);
+      lcd_1.print("LUZ-ON ");
+      Serial.println("LUZ-ON ");
+    }
+    if (analogRead(A5) < 450) {
+      // Tem incidência de luz
+      lcd_1.setCursor(8, 0);
+      lcd_1.print("DIA  ");
+      Serial.println("DIA  ");
+    } else {
+      // Não tem incidência de luz
+      lcd_1.setCursor(8, 0);
+      lcd_1.print("NOITE");
+      Serial.println("NOITE");
+    }
+    if (digitalRead(4) == LOW) {
+      // BOTAO 1
+      lcd_1.setCursor(0, 1);
+      lcd_1.print("AUT-ON ");
+      Serial.println("AUT-ON ");
+    }
+    if (digitalRead(4) == HIGH) {
+      // BOTAO 2
+      lcd_1.setCursor(0, 1);
+      lcd_1.print("AUT-OFF");
+      Serial.println("AUT-OFF");
+    }
+    if (digitalRead(4) == HIGH) {
+      // BOTAO 2
+      lcd_1.setCursor(8, 1);
+      lcd_1.print("MAN-ON ");
+      Serial.println("MAN-ON ");
+    }
+    if (digitalRead(4) == LOW) {
+      // BOTAO 2
+      lcd_1.setCursor(8, 1);
+      lcd_1.print("MAN-OFF");
+      Serial.println("MAN-OFF");
+    }
+    if (digitalRead(0) == HIGH) {
+      lcd_1.setCursor(7, 0);
+      lcd_1.print("|");
+      lcd_1.setCursor(7, 1);
+      lcd_1.print("|");
+    }
+  }
+  if (digitalRead(4) == LOW) {
+    digitalWrite(5, HIGH);
+    // AUTOMATICO ON
+    if (analogRead(A5) < 450) {
+      // TEM CLARIDADE
+      digitalWrite(2, LOW);
+    } else {
+      // NAO TEM CLARIDADE
+      if (digitalRead(6) == HIGH) {
+        // SENSOR DE PRESENÇA ON
+        digitalWrite(2, HIGH);
+      }
+      if (digitalRead(6) == LOW) {
+        // SENSOR DE PRESENÇA OFF
+        if (digitalRead(2) == HIGH) {
+          // TEMPO QUE IRÁ AGUARDAR ATÉ DESLIGAR
+          delay(5000); // Wait for 5000 millisecond(s)
+          // LUZ LIGADA
+          digitalWrite(2, LOW);
+        }
+      }
+    }
+  } else {
+    // AUTOMATICO OFF
+    digitalWrite(5, LOW);
+  }
+  if (analogRead(A4) == 0) {
+    // BOTAO 1 - DESLIGAR AUTOMATICO
+    digitalWrite(2, LOW);
+    digitalWrite(4, HIGH);
+    digitalWrite(13, HIGH);
+  }
+  if (digitalRead(4) == HIGH) {
+    if (analogRead(A3) == 0) {
+      // BOTAO 2 - DESLIGAR AUTOMATICO
+      digitalWrite(4, LOW);
+      digitalWrite(13, LOW);
+      digitalWrite(2, LOW);
+    }
+  }
+  if (digitalRead(13) == HIGH) {
+    if (analogRead(A2) == 0) {
+      // BOTAO 3
+      digitalWrite(2, HIGH);
+    }
+    if (analogRead(A1) == 0) {
+      // BOTAO 4
+      digitalWrite(2, LOW);
+    }
+  }
+}
